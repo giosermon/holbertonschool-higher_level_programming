@@ -2,13 +2,10 @@
 """Documentation for a square class"""
 
 
-class Square():
-    '''class Square.
-    '''
+class Square:
+    """Initialization of instance attributes"""
+    __size = 0
 
     def __init__(self, size):
-        '''Initialization of instance attributes
-                Args:
-                size (int): The size of the new square
-        '''
+
         self.__size = size
