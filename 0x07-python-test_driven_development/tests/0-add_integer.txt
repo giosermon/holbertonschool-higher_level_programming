@@ -1,73 +1,79 @@
-Test The 0-add_integer module
-========================================================================
+'Test for 0-add_integer module' [ 'Prueba para el módulo 0-add_integer'] 
+======================================================================== [ ================================================ ======================] 
 'Funtion to test:   add_integer()'
 ========================================================================
 
-'Import function'
->>> add_integer = __import__('0-add_integer').add_integer
+Using ``add_integer``
+---------------------
+Checking docstring for module:
+        >>> __import__('0-add_integer').__doc__ != None
+        True
 
-******************
-Correct 
-******************
-Adding two numbers:
->>> add_integer(8, 8)
-16
+Import ``add_integer`` from the ``0-add_integer`` module:
+        >>> add_integer = __import__('0-add_integer').add_integer
 
->>> add_integer(5, 5)
-10
+Check docstring for function:
+        >>> len(add_integer.__doc__) > 0
+        True
 
->>> add_integer(-5,-2 )
--7
-Adding two float:
->>> add_integer(2.5, 2.5)
-5
+Adding two numbers
+        >>> add_integer(6, 2)
+        8
+
+Adding with negative number:
+        >>> add_integer(-4, -2)
+        -6
+
+Adding float with int:
+        >>> add_integer(4.1, 2)
+        6
+
+Adding neggative float with float:
+        >>> add_integer(-4.1, 2.3)
+        -2
+
+Adding float with float:
+        >>> add_integer(2.3, 2.4)
+        4
+
+Checking the return of the function:
+        >>> type(add_integer(-4, 2)) == int
+        True
+
+Adding a string with int:
+        >>> add_integer("H", 2)
+        Traceback (most recent call last):
+                ...
+        TypeError: a must be an integer
+
+Adding a int with string:
+        >>> add_integer(2, "H")
+        Traceback (most recent call last):
+                ...
+        TypeError: b must be an integer
 
 Adding big numbers:
->>> add_integer(1213213213213213212313213212313223, 45465456465465465465465465465)
-1213258678669678677778678677778688
+        >>> add_integer(1213213213213213212313213212313223, 45465456465465465465465465465)
+        1213258678669678677778678677778688
 
-******************
-Incorrect
-******************
-Adding a int with string:
->>> add_integer('j', 8)
-Traceback (most recent call last):
-TypeError: a must be an integer
+Adding with inf:
+        >>> add_integer(float('inf'), 2)
+        Traceback (most recent call last):
+                ...
+        OverflowError: cannot convert float infinity to integer
 
-Adding a int with string:
->>> add_integer(8, 'm')
-Traceback (most recent call last):
-TypeError: b must be an integer
+Call empty function:
+        >>> add_integer()
+        Traceback (most recent call last):
+                ...
+        TypeError: add_integer() missing 1 required positional argument: 'a'
 
-Adding a string:
->>> add_integer('h,'p')
-Traceback (most recent call last):
-TypeError: a must be an integer
+Call function with more than 2 arguments:
+        >>> add_integer(1, 2, 3)
+        Traceback (most recent call last):
+                ...
+        TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
 
->>> add_integer([2, 3, 4], 5)
-Traceback (most recent call last):
-TypeError: a must be an integer
-
->>> add_integer(5, [2, 3, 4])
-Traceback (most recent call last):
-TypeError: b must be an integer
-
->>> add_integer(float('nan'), -6)
-Traceback (most recent call last):
-ValueError: cannot convert float NaN to integer
-
->>> add_integer(float('inf'), -7)
-Traceback (most recent call last):
-OverflowError: cannot convert float infinity to integer
-
-
-******************
-Empty Arguments
-******************
->>> add_integer(None)
-Traceback (most recent call last):
-TypeError: a must be an integer
-
->>> add_integer()
-Traceback (most recent call last):
-TypeError: add_integer() missing 1 required positional argument: 'a'
+Call function with only 1 argument:
+        >>> add_integer(1)
+        99
