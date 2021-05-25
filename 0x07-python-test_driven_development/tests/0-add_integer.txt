@@ -1,0 +1,73 @@
+Test The 0-add_integer module
+========================================================================
+'Funtion to test:   add_integer()'
+========================================================================
+
+'Import function'
+>>> add_integer = __import__('0-add_integer').add_integer
+
+******************
+Correct 
+******************
+Adding two numbers:
+>>> add_integer(8, 8)
+16
+
+>>> add_integer(5, 5)
+10
+
+>>> add_integer(-5,-2 )
+-7
+Adding two float:
+>>> add_integer(2.5, 2.5)
+5
+
+Adding big numbers:
+>>> add_integer(1213213213213213212313213212313223, 45465456465465465465465465465)
+1213258678669678677778678677778688
+
+******************
+Incorrect
+******************
+Adding a int with string:
+>>> add_integer('j', 8)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+Adding a int with string:
+>>> add_integer(8, 'm')
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+Adding a string:
+>>> add_integer('h,'p')
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer([2, 3, 4], 5)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(5, [2, 3, 4])
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add_integer(float('nan'), -6)
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(float('inf'), -7)
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+
+******************
+Empty Arguments
+******************
+>>> add_integer(None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
