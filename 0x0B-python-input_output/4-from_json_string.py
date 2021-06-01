@@ -4,9 +4,9 @@ import json
 def from_json_string(my_str):
     """ Returns an object (Python data structure)
     represented by a JSON string
-    Args:
+   Args:
        my_str: JSON string to convert to a python object.
-    Return:
+   Return:
        A python data structure object
 
     """
