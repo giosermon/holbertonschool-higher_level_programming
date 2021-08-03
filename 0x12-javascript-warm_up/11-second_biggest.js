@@ -4,7 +4,12 @@ const args = process.argv;
 if (args.lenght <= 3) {
   console.log(0);
 } else {
-  args.sort((a, b) => a - b);
-  args.pop();
-  console.log(args.pop());
+  const array = [];
+  for (let i = 2; i < args.length; i++) {
+    array.push(parseInt(args[i]));
+  }
+  array.sort(function (a, b) {
+    return a - b;
+  });
+  console.log(array[array.length - 2]);
 }
