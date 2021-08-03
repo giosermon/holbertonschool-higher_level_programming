@@ -4,7 +4,7 @@ const args = process.argv;
 if (args.lenght <= 3) {
   console.log(0);
 } else {
-    args.sort((a, b) => a - b);
-    args.pop();
-    console.log(args.pop());
+  args.sort((a, b) => a - b);
+  args.pop();
+  console.log(args.pop());
 }
