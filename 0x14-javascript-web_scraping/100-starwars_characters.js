@@ -1,16 +1,16 @@
 #!/usr/bin/node
+
 const request = require('request');
-request(process.argv[2], function (err, response, body) {
-  if (!err) {
-    const todos = JSON.parse(body);
-    const completed = {};
-    todos.forEach((todo) => {
-      if (todo.completed && completed[todo.userId] === undefined) {
-        completed[todo.userId] = 1;
-      } else if (todo.completed) {
-        completed[todo.userId] += 1;
-      }
+const { argv } = require('process');
+
+const API_URL = 'https://swapi-api.hbtn.io/api/films/' + argv[2];
+
+request(API_URL, (err, response, body) => {
+  if (err) console.log(err);
+  JSON.parse(body).characters.map((char) => {
+    request(char, (err, response, body) => {
+      if (err) console.log(err);
+      console.log(JSON.parse(body).name);
     });
-    console.log(completed);
-  }
+  });
 });
