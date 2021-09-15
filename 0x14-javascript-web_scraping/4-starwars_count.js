@@ -11,4 +11,3 @@ request(url, function (err, response, body) {
   const uniq = list.filter(x => x.includes('18'));
   console.log(uniq.length);
 });
-
